@@ -71,8 +71,8 @@ public class MultLanguTestStepdefs {
         Assert.assertTrue(goodCondition);
     }
 
-    @And("user white tell element identefied by {string} sows up")
-    public void userWhiteTellElementIdentefiedBySowsUp(String elemId) {
+    @And("user waite tell element identefied by {string} sows up")
+    public void userWaiteTellElementIdentefiedBySowsUp(String elemId) {
         //we=driver.findElement(By.id(elemId));
         we=null;
         goodCondition=false;
@@ -81,7 +81,6 @@ public class MultLanguTestStepdefs {
 
             try {
                 //driver.wait(1000);
-                //driver.manage().sl;
                 Thread.sleep(1000);
                 we=driver.findElement(By.id(elemId));
 
@@ -147,7 +146,7 @@ public class MultLanguTestStepdefs {
     public void userSouldLandInNewTabWerePageTitleContains(String textInTitle) {
 
         //t
-        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"9");
+       // driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"9");
 
         String w0=driver.getWindowHandle();
         String w0a=(String) driver.getWindowHandles().toArray()[0];
@@ -165,5 +164,22 @@ public class MultLanguTestStepdefs {
         goodCondition=PageTitle.contains(textInTitle);
         Assert.assertTrue(goodCondition);
 
+    }
+
+
+
+
+
+
+
+
+
+    @And("user close new tab")
+    public void userCloseNewTab() {
+        String w0=driver.getWindowHandle();
+        String w0a=(String) driver.getWindowHandles().toArray()[0];
+        String w1= (String) driver.getWindowHandles().toArray()[1];
+        driver.switchTo().window(w1);
+        driver.close();
     }
 }
